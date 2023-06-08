@@ -11,15 +11,15 @@ app.use(express.static('public'));
 
 const server = http.createServer(app);
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, 'public')));
-} else {
-  const corsOptions = {
-    origin: ['https://rabbitsvsturtles.onrender.com'],
-    credentials: true,
-  };
-  app.use(cors(corsOptions));
-}
+// if (process.env.NODE_ENV === 'production') {
+app.use(express.static(path.resolve(__dirname, 'public')));
+// } else {
+const corsOptions = {
+  origin: ['https://rabbitsvsturtles.onrender.com'],
+  credentials: true,
+};
+app.use(cors(corsOptions));
+// }
 
 const { connectSockets } = require('./services/socket.service');
 const { startAllListeners } = require('./services/listeners.service');
