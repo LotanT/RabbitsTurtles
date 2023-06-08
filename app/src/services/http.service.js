@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 const BASE_URL =
   process.env.NODE_ENV === 'production'
-    ? 'https://rabbitsvsturtlesapi.onrender.com/'
+    ? 'https://rabbitsvsturtlesapi.onrender.com/api/'
     : 'http://localhost:3001/api/';
 
 var axios = Axios.create({
