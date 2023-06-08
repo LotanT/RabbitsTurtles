@@ -1,7 +1,9 @@
 import Axios from 'axios';
 
 const BASE_URL =
-  process.env.NODE_ENV === 'production' ? '/api/' : 'http://localhost:3001/api/';
+  process.env.NODE_ENV === 'production'
+    ? 'https://rabbitsvsturtlesapi.onrender.com'
+    : 'http://localhost:3001/api/';
 
 var axios = Axios.create({
   withCredentials: true,
@@ -24,12 +26,12 @@ export const httpService = {
 
 async function ajax(endpoint, method = 'GET', data = null) {
   try {
-      const res = await axios({
-          url: `${BASE_URL}${endpoint}`,
-          method,
-          data,
-          params: method === 'GET' ? data : null,
-        });
+    const res = await axios({
+      url: `${BASE_URL}${endpoint}`,
+      method,
+      data,
+      params: method === 'GET' ? data : null,
+    });
     return res.data;
   } catch (err) {
     console.log(
